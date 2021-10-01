@@ -1,0 +1,10 @@
+th {
+  background-color: #777;
+  border: 2px black solid;
+  color: #ff5;
+  text-align: center;
+}
+td,
+tr {
+  border: 2px black solid;
+}

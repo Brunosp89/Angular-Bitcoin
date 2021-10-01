@@ -1,0 +1,17 @@
+p {
+  font-family: Lato;
+}
+.valorAtual {
+  display: inline-flex;
+}
+.timer {
+  color: #999;
+  font-size: 13px;
+}
+.navbar-brand {
+  color: #ff5;
+}
+
+.cotacao {
+  text-align: center;
+}

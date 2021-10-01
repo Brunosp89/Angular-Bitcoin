@@ -1,0 +1,26 @@
+<h3>Minhas Bitcoins: {{ getSaldo() }} un</h3>
+
+<div>Compra de Bitcoin</div>
+<input
+  class="form-control"
+  type="number"
+  step="0.00001"
+  min="0"
+  [(ngModel)]="compra"
+/>
+
+<div>Bitcoins Compradas {{ getCompraBitcoin() }} un</div>
+<div class="compra">Valor: {{ getValorCompra() | currency: 'USD' }}</div>
+
+<div>Venda de Bitcoin</div>
+<input
+  class="form-control"
+  type="number"
+  step="0.00001"
+  min="0"
+  [(ngModel)]="venda"
+/>
+<div>Bitcoins Vendidas {{ getVendaBitcoin() }} un</div>
+<div class="venda">Valor: {{ getValorVenda() | currency: 'USD' }}</div>
+
+<button (click)="setSaldo()">Finalizar</button>

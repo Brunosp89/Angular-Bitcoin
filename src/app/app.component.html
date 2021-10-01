@@ -1,0 +1,51 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/']">{{ name }}</a>
+  <div class="timer">
+    <span>(Atualiza em {{ brunoWalletService.getCount() }}s)</span>
+  </div>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/bruno-currency']">Currency</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/bruno-wallet']">Wallet</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div>
+    <h4>Bruno da Silva Pereira</h4>
+    <p>
+      RA: 0050831821006<br />
+      Github: <a href="https://github.com/@Brunosp89"> @Brunosp89</a>
+    </p>
+  </div>
+  <h5 class="cotacao">Cotação Atual</h5>
+
+  <span [innerHTML]="this.getCurrentPrice().bpi.USD.symbol"></span>
+  {{ this.getCurrentPrice().bpi.USD.rate }} {{ this.getCompareUSD() }}
+  <span [innerHTML]="this.getCurrentPrice().bpi.EUR.symbol"></span>
+  {{ this.getCurrentPrice().bpi.EUR.rate }} {{ this.getCompareEUR() }}
+  <span [innerHTML]="this.getCurrentPrice().bpi.GBP.symbol"></span>
+  {{ this.getCurrentPrice().bpi.GBP.rate }} {{ this.getCompareGBP() }}
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

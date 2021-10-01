@@ -1,0 +1,21 @@
+<div *ngIf="getCurrentPrice()">
+  <div>
+    <h4>Data/Hora</h4>
+    {{ this.getCurrentPrice().time.updated }}
+  </div>
+
+  <table>
+    <tr>
+      <th>Data/Hora</th>
+      <th>USD</th>
+      <th>EUR</th>
+      <th>GBP</th>
+    </tr>
+    <tr *ngFor="let price of this.brunoWalletService.updateList">
+      <td>{{ price.timestamp | date: 'full'}}</td>
+      <td>{{ price.USD | currency }}</td>
+      <td>{{ price.EUR | currency }}</td>
+      <td>{{ price.GBP | currency }}</td>
+    </tr>
+  </table>
+</div>
