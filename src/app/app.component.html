@@ -39,9 +39,9 @@
   <h5 class="cotacao">Cotação Atual</h5>
 
   <span [innerHTML]="this.getCurrentPrice().bpi.USD.symbol"></span>
-  {{ this.getCurrentPrice().bpi.USD.rate }} {{ this.getCompareUSD() }}
+  {{ this.getCurrentPrice().bpi.USD.rate }} {{ this.getCompareUSD() }} |
   <span [innerHTML]="this.getCurrentPrice().bpi.EUR.symbol"></span>
-  {{ this.getCurrentPrice().bpi.EUR.rate }} {{ this.getCompareEUR() }}
+  {{ this.getCurrentPrice().bpi.EUR.rate }} {{ this.getCompareEUR() }} |
   <span [innerHTML]="this.getCurrentPrice().bpi.GBP.symbol"></span>
   {{ this.getCurrentPrice().bpi.GBP.rate }} {{ this.getCompareGBP() }}
 
