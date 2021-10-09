@@ -32,7 +32,7 @@ export class AppComponent {
   getCompareUSD() {
     return this.brunoWalletService.compareUSD();
   }
-
+  /*
   getCompareEUR() {
     return this.brunoWalletService.compareEUR();
   }
@@ -40,4 +40,5 @@ export class AppComponent {
   getCompareGBP() {
     return this.brunoWalletService.compareGBP();
   }
+  */
 }

@@ -36,15 +36,24 @@
       Github: <a href="https://github.com/@Brunosp89"> @Brunosp89</a>
     </p>
   </div>
-  <h5 class="cotacao">Cotação Atual</h5>
 
+  <h5 class="cotacao">Cotação Atual{{ this.getCompareUSD() }}</h5>
+  
+  <!--
   <span [innerHTML]="this.getCurrentPrice().bpi.USD.symbol"></span>
   {{ this.getCurrentPrice().bpi.USD.rate }} {{ this.getCompareUSD() }} |
+  -->
+  <!--
   <span [innerHTML]="this.getCurrentPrice().bpi.EUR.symbol"></span>
   {{ this.getCurrentPrice().bpi.EUR.rate }} {{ this.getCompareEUR() }} |
+  -->
+  <!-- <span>R$</span>
+  {{ brunoWalletService.brlBitCoinRates[i]?.bpi.BRL.rate_float }} 
+-->
+  <!--
   <span [innerHTML]="this.getCurrentPrice().bpi.GBP.symbol"></span>
   {{ this.getCurrentPrice().bpi.GBP.rate }} {{ this.getCompareGBP() }}
-
+  -->
   <div>
     <router-outlet></router-outlet>
   </div>

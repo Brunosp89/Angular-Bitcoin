@@ -16,6 +16,17 @@ interface Response {
   };
 }
 
+interface BrlBitCoinRate {
+  time: {
+    updated: string;
+  };
+  bpi: {
+    BRL: {
+      rate_float: number;
+    };
+  };
+}
+
 interface PriceUpdate {
   timestamp: Date;
   USD: number;
@@ -35,6 +46,7 @@ export class BrunoWalletService {
   ultimaGBP: number;
 
   updateList: Array<PriceUpdate> = [];
+  brlBitCoinRates: Array<BrlBitCoinRate> = [];
 
   constructor(private http: HttpClient) {
     this.saldo = 0;
@@ -50,8 +62,8 @@ export class BrunoWalletService {
         this.setValorAtualEUR();
         this.setValorAtualGBP();
         this.compareUSD();
-        this.compareEUR();
-        this.compareGBP();
+        //this.compareEUR();
+        //this.compareGBP();
         this.ultimaUSD = this.currentPrice.bpi.USD.rate_float;
         this.ultimaEUR = this.currentPrice.bpi.EUR.rate_float;
         this.ultimaGBP = this.currentPrice.bpi.GBP.rate_float;
@@ -61,6 +73,13 @@ export class BrunoWalletService {
           EUR: this.currentPrice.bpi.EUR.rate_float,
           GBP: this.currentPrice.bpi.GBP.rate_float,
         });
+      });
+    this.http
+      .get<BrlBitCoinRate>(
+        'https://api.coindesk.com/v1/bpi/currentprice/BRL.json'
+      )
+      .subscribe((data) => {
+        this.brlBitCoinRates.push(data);
       });
   }
   private timer: any;
@@ -102,14 +121,14 @@ export class BrunoWalletService {
 
   compareUSD() {
     if (this.ultimaUSD > this.valorAtualUSD) {
-      return ' ↑ ';
+      return ' ↑ Em alta ';
     } else if (this.ultimaUSD < this.valorAtualUSD) {
-      return ' ↓ ';
+      return ' ↓ Em queda ';
     } else {
       return ' - ';
     }
   }
-
+  /*
   compareEUR() {
     if (this.ultimaEUR > this.valorAtualEUR) {
       return ' ↑ ';
@@ -127,6 +146,34 @@ export class BrunoWalletService {
       return ' ↓ ';
     } else {
       return ' - ';
+    }
+  }
+  */
+
+  getBtcInBRL() {
+    let length = this.brlBitCoinRates.length;
+    if (length > 0) {
+      return this.saldo * this.brlBitCoinRates[length - 1].bpi.BRL.rate_float;
+    } else {
+      return 0;
+    }
+  }
+
+  getBtcInUSD() {
+    let length = this.brlBitCoinRates.length;
+    if (length > 0) {
+      return this.saldo * this.currentPrice[length - 1].bpi.USD.rate_float;
+    } else {
+      return 0;
+    }
+  }
+
+  getBtcInEUR() {
+    let length = this.brlBitCoinRates.length;
+    if (length > 0) {
+      return this.saldo * this.currentPrice[length - 1].bpi.USD.rate_float;
+    } else {
+      return 0;
     }
   }
 }
