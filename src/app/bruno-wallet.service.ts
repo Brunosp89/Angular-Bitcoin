@@ -158,7 +158,7 @@ export class BrunoWalletService {
       return 0;
     }
   }
-
+  /*
   getBtcInUSD() {
     let length = this.brlBitCoinRates.length;
     if (length > 0) {
@@ -167,7 +167,7 @@ export class BrunoWalletService {
       return 0;
     }
   }
-
+/*
   getBtcInEUR() {
     let length = this.brlBitCoinRates.length;
     if (length > 0) {
@@ -175,5 +175,5 @@ export class BrunoWalletService {
     } else {
       return 0;
     }
-  }
+  }*/
 }
