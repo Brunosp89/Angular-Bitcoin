@@ -10,6 +10,7 @@ export class BrunoWalletComponent implements OnInit {
   compra: number;
   venda: number;
   preco: number;
+
   constructor(public bitcoinService: BrunoWalletService) {
     this.compra = 0;
     this.venda = 0;
